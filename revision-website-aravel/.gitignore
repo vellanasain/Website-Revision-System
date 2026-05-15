@@ -1,0 +1,6 @@
+/node_modules/
+/frontend-react/node_modules/
+/frontend-react/dist/
+/vendor/
+/storage/*.key
+.env

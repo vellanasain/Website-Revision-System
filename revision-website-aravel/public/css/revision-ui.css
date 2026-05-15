@@ -354,20 +354,20 @@ select:focus {
 }
 
 .icon-button {
-    width: 120px;
-    min-width: 120px;
-    height: 36px;
+    width: 56px;
+    min-width: 56px;
+    height: 46px;
     padding: 0;
 }
 
 .search-button svg {
-       width: 120px;
-       height: 120px;
-       fill: none;
-       stroke: currentColor;
-       stroke-linecap: round;
-       stroke-linejoin: round;
-       stroke-width: 6;
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.8;
 }
 
 .ghost-button {
@@ -1294,6 +1294,11 @@ html[data-theme="dark"] .note-dialog header {
     gap: 10px;
 }
 
+
+.search-form .primary-button {
+    align-self: stretch;
+}
+
 @media (max-width: 1180px) {
     .workspace-head,
     .group-summary {
@@ -1314,6 +1319,27 @@ html[data-theme="dark"] .note-dialog header {
 
     .step-row {
         grid-template-columns: 90px minmax(220px, 1fr) 120px 150px;
+    }
+}
+
+@media (max-width: 980px) {
+    .workspace-head {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .search-form {
+        grid-column: auto;
+        grid-template-columns: minmax(0, 1fr) minmax(140px, 180px) 56px;
+    }
+
+    .search-form label:nth-of-type(3) {
+        grid-column: 1 / -1;
+    }
+
+    .add-button {
+        justify-self: stretch;
+        width: 100%;
     }
 }
 
@@ -1371,6 +1397,22 @@ html[data-theme="dark"] .note-dialog header {
         grid-template-columns: 1fr;
     }
 
+    .search-form .icon-button,
+    .add-button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .search-button svg {
+        width: 30px;
+        height: 30px;
+        stroke-width: 2.8;
+    }
+
+    .revision-table {
+        min-width: 920px;
+    }
+
     .form-grid .field:first-child,
     .form-grid .field:nth-child(3) {
         grid-column: auto;
@@ -1399,14 +1441,6 @@ html[data-theme="dark"] .note-dialog header {
         font-size: 16px;
     }
 }
-html {
-    font-size: 80%;
-}
-
-body {
-    font-size: 12.8px;
-}
-
 @media (min-width: 761px) {
     .app-shell {
         grid-template-columns: 70px minmax(0, 1fr);
@@ -1469,8 +1503,8 @@ body {
     }
 
     .workspace-head {
-        grid-template-columns: minmax(170px, .8fr) minmax(520px, 1.35fr) minmax(150px, auto);
-        gap: 8px;
+        grid-template-columns: minmax(180px, .8fr) minmax(520px, 1.35fr) minmax(150px, auto);
+        gap: 12px;
         margin-top: 24px;
     }
 
@@ -1480,8 +1514,9 @@ body {
     }
 
     .search-form {
-        grid-template-columns: minmax(240px, 1fr) minmax(145px, 165px) minmax(145px, 165px) 37px;
+        grid-template-columns: minmax(220px, 1fr) minmax(140px, 165px) minmax(140px, 165px) 48px;
         gap: 8px;
+        align-items: stretch;
     }
 
     input,
@@ -1505,14 +1540,15 @@ body {
     }
 
     .icon-button {
-        width: 37px;
-        min-width: 37px;
+        width: 48px;
+        min-width: 48px;
+        height: 36px;
     }
 
     .search-button svg {
-        width: 100px;
-        height: 100px;
-        stroke-width: 5;
+        width: 25px;
+        height: 25px;
+        stroke-width: 2.6;
     }
 
     .add-button {
@@ -1559,7 +1595,7 @@ body {
     }
 
     .revision-table-wrap {
-        overflow-x: visible;
+        overflow-x: auto;
         padding: 0 21px 18px;
     }
 
