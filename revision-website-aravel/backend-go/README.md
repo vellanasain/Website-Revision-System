@@ -5,6 +5,7 @@ Backend Golang ini menyediakan REST API untuk sistem revisi website dan menyimpa
 ## Endpoint
 
 - `GET /health`
+- `GET /api/health` (alias kompatibilitas legacy)
 - `GET /api/revisions?q=&status=`
 - `POST /api/revisions`
 - `PUT /api/revisions/{id}`
