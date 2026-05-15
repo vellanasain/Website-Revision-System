@@ -264,6 +264,7 @@ func main() {
 	api := &api{store: store}
 
 	mux.HandleFunc("/health", api.health)
+	mux.HandleFunc("/api/health", api.health)
 	mux.HandleFunc("/api/revisions", api.revisions)
 	mux.HandleFunc("/api/revisions/", api.revisionByID)
 
