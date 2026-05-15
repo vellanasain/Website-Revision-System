@@ -1,26 +1,13 @@
 {
-  "name": "revision-redesign-laravel",
+  "name": "revision-website-react-go",
   "version": "1.0.0",
-  "description": "A Laravel project for UI/UX redesign of the revision page.",
-  "main": "public/index.php",
+  "private": true,
+  "description": "Website revision system with React frontend and Golang backend.",
   "scripts": {
-    "dev": "npm run development",
-    "development": "mix",
-    "watch": "mix watch",
-    "watch-poll": "mix watch -- --watch-options-poll=1000",
-    "hot": "mix watch --hot",
-    "prod": "npm run production",
-    "production": "mix --production"
-  },
-  "dependencies": {
-    "laravel-mix": "^6.0",
-    "axios": "^0.21",
-    "bootstrap": "^5.1",
-    "jquery": "^3.6"
-  },
-  "devDependencies": {
-    "sass": "^1.32.0",
-    "sass-loader": "^10.1.0"
+    "frontend:dev": "npm --prefix frontend-react run dev",
+    "frontend:build": "npm --prefix frontend-react run build",
+    "backend:dev": "cd backend-go && go run ./cmd/server",
+    "backend:test": "cd backend-go && go test ./..."
   },
   "license": "MIT"
 }

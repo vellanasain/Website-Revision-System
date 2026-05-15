@@ -1,26 +1,23 @@
 # Website Revision System
 
-Project ini sekarang menyiapkan dua jalur aplikasi:
+Aplikasi ini sudah diarahkan menjadi stack **full frontend React** dan **backend Golang**. Laravel lama tidak lagi menjadi jalur utama untuk menjalankan aplikasi; source React berada di `frontend-react/` dan REST API Golang berada di `backend-go/`.
 
-1. **Legacy Laravel** untuk menjaga fitur yang sudah ada tetap bisa berjalan.
-2. **Frontend React + Backend Golang** sebagai stack baru yang lebih mudah dipakai lintas laptop dan mobile friendly.
+## Struktur utama
 
-## Struktur penting
+- `frontend-react/`: aplikasi React + Vite untuk dashboard, pencarian, filter, tambah, edit, dan hapus data revisi.
+- `backend-go/`: REST API Golang dengan storage JSON lokal untuk data revisi.
+- `backend-go/data/revisions.json`: file data otomatis dibuat saat API pertama kali dijalankan.
 
-- `public/css/revision-ui.css` dan `resources/sass/revision-ui.scss`: styling Laravel yang sudah diperbaiki agar responsive.
-- `frontend-react/`: aplikasi React + Vite untuk frontend baru.
-- `backend-go/`: API REST Golang untuk backend baru.
+## Menjalankan aplikasi
 
-## Menjalankan stack React + Golang
-
-Terminal 1:
+Terminal 1 untuk backend:
 
 ```bash
 cd backend-go
 go run ./cmd/server
 ```
 
-Terminal 2:
+Terminal 2 untuk frontend:
 
 ```bash
 cd frontend-react
@@ -30,12 +27,23 @@ VITE_API_BASE_URL=http://localhost:8080 npm run dev
 
 Buka URL Vite yang muncul di terminal, biasanya `http://localhost:5173`.
 
-## Menjalankan Laravel lama
+## Environment backend
+
+- `PORT`: port API, default `8080`.
+- `REVISION_DATA_PATH`: lokasi file JSON, default `data/revisions.json`.
+
+## Endpoint API
+
+- `GET /health`
+- `GET /api/revisions?q=&status=`
+- `POST /api/revisions`
+- `PUT /api/revisions/{id}`
+- `PATCH /api/revisions/{id}`
+- `DELETE /api/revisions/{id}`
+
+## Perintah validasi
 
 ```bash
-composer install
-npm install
-php artisan key:generate
-php artisan migrate --seed
-php artisan serve
+cd backend-go && go test ./...
+cd frontend-react && npm run build
 ```
