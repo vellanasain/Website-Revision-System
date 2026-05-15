@@ -1,6 +1,6 @@
-# Frontend React
+# Frontend React + Vite
 
-Frontend React memakai Vite dan mengambil data dari backend Golang. UI mendukung pencarian, filter status, ringkasan metrik, tambah revisi, edit revisi, dan hapus revisi.
+Frontend ini adalah SPA React murni. `index.html` hanya menyediakan mount point `#root`; semua tampilan aplikasi dirender oleh komponen React di `src/App.jsx` dan data diambil dari REST API Golang.
 
 ## Menjalankan
 

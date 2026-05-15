@@ -6,6 +6,7 @@
   --text: #101820;
   --muted: #637482;
   --line: #cfe3ed;
+  --line-strong: #a8d4e4;
   --cyan: #12a9c9;
   --cyan-dark: #098eaa;
   --cyan-soft: #cfeff7;
@@ -244,4 +245,40 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(18, 169, 201
   .form-grid { grid-template-columns: 1fr; }
   .search-button { width: 100%; }
   .revision-table { min-width: 980px; }
+}
+
+.api-banner {
+  display: grid;
+  gap: 6px;
+  width: calc(100% - 56px);
+  margin: 20px 28px 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(18, 169, 201, .14), rgba(37, 185, 111, .10));
+  color: var(--text);
+}
+
+.api-banner strong {
+  color: var(--cyan-dark);
+  font-size: 1rem;
+}
+
+.api-banner span {
+  color: var(--muted);
+}
+
+.api-banner code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .62);
+  color: var(--cyan-dark);
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .api-banner {
+    width: calc(100% - 32px);
+    margin-inline: 16px;
+  }
 }
