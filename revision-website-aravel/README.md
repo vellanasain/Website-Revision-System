@@ -1,24 +1,29 @@
-# Website Revision System
+# Website Revision System (React + Go Only)
 
-Aplikasi ini menggunakan frontend **React + Vite** dan backend **Golang REST API**.
-Semua artefak Laravel/PHP sudah dihapus, sehingga aplikasi **tidak membutuhkan `php artisan serve`**.
+Aplikasi ini sekarang berjalan **tanpa runtime Laravel/PHP**.
+Frontend utama adalah **React + Vite** (`localhost:5173`) dan backend utama adalah **Golang API** (`localhost:8080`).
 
-## Struktur utama
+## Arsitektur aktif
 
-- `frontend-react/`: single page application React.
-- `backend-go/`: REST API Golang.
-- `backend-go/data/revisions.json`: data lokal (dibuat otomatis saat backend pertama jalan).
+- `frontend-react/` → SPA React (render halaman, termasuk halaman revisi).
+- `backend-go/` → REST API Golang.
+- Tidak ada render Blade.
+- Tidak ada route Laravel untuk `/revisions`.
+- Tidak menggunakan `php artisan serve`.
+- Tidak ada aplikasi yang dijalankan di port `8000` sebagai entrypoint utama.
 
-## Menjalankan aplikasi (tanpa PHP)
+## Menjalankan aplikasi
 
-Terminal 1 (backend):
+### 1) Backend Go (wajib)
 
 ```bash
 cd backend-go
 go run ./cmd/server
 ```
 
-Terminal 2 (frontend):
+Backend aktif di `http://localhost:8080`.
+
+### 2) Frontend React Vite (wajib)
 
 ```bash
 cd frontend-react
@@ -26,32 +31,33 @@ npm install
 VITE_API_BASE_URL=http://localhost:8080 npm run dev
 ```
 
-Buka URL Vite yang muncul di terminal (umumnya `http://localhost:5173`).
+Frontend aktif di `http://localhost:5173`.
 
-## Build produksi
+## Alur data
 
-```bash
-cd frontend-react
-npm run build
-```
+Frontend React mengambil data **langsung** ke API Go:
 
-## Environment backend
-
-- `PORT`: port API (default `8080`).
-- `REVISION_DATA_PATH`: lokasi file JSON (default `data/revisions.json`).
-
-## Endpoint API
-
-- `GET /health`
-- `GET /api/revisions?q=&status=`
+- `GET /api/revisions`
 - `POST /api/revisions`
 - `PUT /api/revisions/{id}`
 - `PATCH /api/revisions/{id}`
 - `DELETE /api/revisions/{id}`
 
-## Validasi
+Implementasi client API ada di `frontend-react/src/api.js`.
 
-```bash
-cd backend-go && go test ./...
-cd frontend-react && npm run build
-```
+## Konfigurasi environment
+
+Gunakan `.env` / `.env.example` berbasis React+Go:
+
+- `VITE_API_BASE_URL=http://localhost:8080`
+- `PORT=8080`
+- `REVISION_DATA_PATH=backend-go/data/revisions.json`
+
+## Dev tunnel
+
+Tunnel development harus diarahkan ke:
+
+- Frontend: `http://localhost:5173`, atau
+- Backend API: `http://localhost:8080`
+
+**Jangan** arahkan tunnel ke Laravel/PHP atau port `8000`.

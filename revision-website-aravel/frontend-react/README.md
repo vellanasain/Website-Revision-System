@@ -18,3 +18,8 @@ npm run build
 ## Konfigurasi
 
 - `VITE_API_BASE_URL`: alamat backend Golang, default `http://localhost:8080`.
+
+## Catatan migrasi
+
+- Tidak ada ketergantungan route Laravel `/revisions`.
+- Frontend hanya konsumsi API Go via `VITE_API_BASE_URL`.
