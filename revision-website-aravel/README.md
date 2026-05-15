@@ -8,6 +8,10 @@ Aplikasi ini sudah diarahkan menjadi stack **full frontend React** dan **backend
 - `backend-go/`: REST API Golang dengan storage JSON lokal untuk data revisi.
 - `backend-go/data/revisions.json`: file data otomatis dibuat saat API pertama kali dijalankan.
 
+## Status Laravel legacy
+
+Komponen Laravel lama yang melayani UI server-rendered sudah dibersihkan: Blade template, route web, controller web, middleware custom, dan feature test web lama tidak lagi dipertahankan. Laravel tidak menjadi entrypoint aplikasi; gunakan React untuk frontend dan Go untuk REST API.
+
 ## Menjalankan aplikasi
 
 Terminal 1 untuk backend:
