@@ -1,11 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RevisionController;
 
-Route::middleware('api')->group(function () {
-    Route::get('/revisions', [RevisionController::class, 'index']);
-    Route::get('/revisions/{id}', [RevisionController::class, 'edit']);
-    Route::put('/revisions/{id}', [RevisionController::class, 'update']);
-});
+// Laravel no longer serves revision APIs. The active REST API lives in backend-go/.
+Route::fallback(fn () => response()->json(['message' => 'Laravel API routes are disabled. Use the Go backend API.'], 404));
