@@ -1,76 +1,41 @@
-# Revision Redesign Laravel Project
+# Website Revision System
 
-This project is a UI/UX redesign of an existing website's revision page, built using Laravel. The goal is to create a more attractive and user-friendly interface while utilizing the existing database.
+Project ini sekarang menyiapkan dua jalur aplikasi:
 
-## Project Structure
+1. **Legacy Laravel** untuk menjaga fitur yang sudah ada tetap bisa berjalan.
+2. **Frontend React + Backend Golang** sebagai stack baru yang lebih mudah dipakai lintas laptop dan mobile friendly.
 
-The project follows the standard Laravel directory structure, with the following key components:
+## Struktur penting
 
-- **app/**: Contains the application logic, including controllers, models, and requests.
-- **bootstrap/**: Contains the bootstrap file for the Laravel application.
-- **config/**: Configuration files for the application, including database settings.
-- **database/**: Contains migrations and seeders for database management.
-- **public/**: The entry point for the application.
-- **resources/**: Contains views, JavaScript, and SASS files for the frontend.
-- **routes/**: Defines the web and API routes for the application.
-- **storage/**: Used for storing cached files and other framework-related data.
-- **tests/**: Contains feature tests to ensure application functionality.
+- `public/css/revision-ui.css` dan `resources/sass/revision-ui.scss`: styling Laravel yang sudah diperbaiki agar responsive.
+- `frontend-react/`: aplikasi React + Vite untuk frontend baru.
+- `backend-go/`: API REST Golang untuk backend baru.
 
-## Installation
+## Menjalankan stack React + Golang
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
+Terminal 1:
 
-2. Navigate to the project directory:
-   ```
-   cd revision-redesign-laravel
-   ```
+```bash
+cd backend-go
+go run ./cmd/server
+```
 
-3. Install dependencies using Composer:
-   ```
-   composer install
-   ```
+Terminal 2:
 
-4. Install JavaScript dependencies using npm:
-   ```
-   npm install
-   ```
+```bash
+cd frontend-react
+npm install
+VITE_API_BASE_URL=http://localhost:8080 npm run dev
+```
 
-5. Copy the `.env.example` file to `.env` and configure your database settings:
-   ```
-   cp .env.example .env
-   ```
+Buka URL Vite yang muncul di terminal, biasanya `http://localhost:5173`.
 
-6. Generate the application key:
-   ```
-   php artisan key:generate
-   ```
+## Menjalankan Laravel lama
 
-7. Run the migrations to set up the database:
-   ```
-   php artisan migrate
-   ```
-
-8. Seed the database with initial data:
-   ```
-   php artisan db:seed
-   ```
-
-9. Start the local development server:
-   ```
-   php artisan serve
-   ```
-
-## Usage
-
-Access the application in your web browser at `http://localhost:8000`. You can manage revisions through the redesigned interface.
-
-## Contributing
-
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+```bash
+composer install
+npm install
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
+```
