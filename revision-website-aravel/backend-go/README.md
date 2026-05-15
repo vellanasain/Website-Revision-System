@@ -46,3 +46,7 @@ Server berjalan di `http://localhost:8080` secara default.
 ```bash
 go test ./...
 ```
+
+## Catatan runtime
+
+Backend ini adalah satu-satunya runtime API. Jangan jalankan `php artisan serve`.
