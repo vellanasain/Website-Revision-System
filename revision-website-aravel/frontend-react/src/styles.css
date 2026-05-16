@@ -22,14 +22,12 @@ button, input, select, textarea { font: inherit; }
 button:disabled { cursor: wait; opacity: .68; }
 
 .app-shell {
-  display: grid;
-  grid-template-columns: 76px minmax(0, 1fr);
   min-height: 100vh;
 }
 
 .rail {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  inset: 0 auto 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +52,7 @@ button:disabled { cursor: wait; opacity: .68; }
 .brand-mark { background: var(--cyan); color: #fff; }
 .rail-button { background: var(--cyan-soft); color: var(--cyan-dark); cursor: pointer; }
 
-.page-shell { min-width: 0; padding-bottom: 36px; }
+.page-shell { min-width: 0; margin-left: 76px; padding-bottom: 36px; }
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -102,6 +100,10 @@ input, select, textarea {
 textarea { min-height: 96px; padding-block: 12px; resize: vertical; }
 input:focus, select:focus, textarea:focus { outline: 3px solid rgba(18, 169, 201, .18); border-color: var(--cyan); }
 
+.search-form select {
+  font-size: .9rem;
+}
+
 .primary-button,
 .ghost-button,
 .danger-button {
@@ -136,7 +138,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(18, 169, 201
   background: var(--panel);
   box-shadow: var(--shadow);
 }
-.metric-card span { color: var(--muted); font-weight: 800; }
+.metric-card span { color: var(--muted); font-size: .86rem; font-weight: 800; }
 .metric-card strong { display: block; margin-top: 12px; font-size: clamp(2rem, 5vw, 2.4rem); }
 
 .revision-board {
@@ -234,8 +236,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(18, 169, 201
 }
 
 @media (max-width: 700px) {
-  .app-shell { grid-template-columns: 1fr; }
-  .rail { position: static; flex-direction: row; justify-content: space-between; height: auto; }
+  .page-shell { margin-left: 0; }
+  .rail { position: static; inset: auto; flex-direction: row; justify-content: space-between; height: auto; width: 100%; }
   .topbar { flex-direction: column; padding: 16px; }
   .workspace-head,
   .metric-grid,
